@@ -1,0 +1,10 @@
+PODS:
+  - google-cast-sdk (2.5.1)
+
+DEPENDENCIES:
+  - google-cast-sdk (~> 2.5)
+
+SPEC CHECKSUMS:
+  google-cast-sdk: 702408473088f7224abf5d7ae73303d96cc3503e
+
+COCOAPODS: 0.37.2
