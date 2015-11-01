@@ -35,7 +35,7 @@ class CastService : NSObject, GCKDeviceScannerListener, GCKDeviceManagerDelegate
         
         btnImage = UIImage(named: "icon-cast-identified.png")!
         btnImageSelected = UIImage(named: "icon-cast-connected.png")!
-        chromecastButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        chromecastButton = UIButton(type: UIButtonType.System)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -139,12 +139,12 @@ class CastService : NSObject, GCKDeviceScannerListener, GCKDeviceManagerDelegate
 extension CastService {
     
     func deviceDidComeOnline(device: GCKDevice!) {
-        println("Device found: \(device.friendlyName)");
+        print("Device found: \(device.friendlyName)");
         updateButtonStates();
     }
     
     func deviceDidGoOffline(device: GCKDevice!) {
-        println("Device went away: \(device.friendlyName)");
+        print("Device went away: \(device.friendlyName)");
         updateButtonStates();
     }
 }
@@ -157,7 +157,7 @@ extension CastService {
         } else if (selectedDevice == nil) {
             if(buttonIndex < deviceScanner.devices.count) {
                 selectedDevice = deviceScanner.devices[buttonIndex] as? GCKDevice;
-                println("Selected device: \(selectedDevice!.friendlyName)");
+                print("Selected device: \(selectedDevice!.friendlyName)");
                 connectToDevice();
             }
         } else if (actionSheet.buttonTitleAtIndex(buttonIndex) == kDisconnectTitle) {
@@ -173,7 +173,7 @@ extension CastService {
 extension CastService {
     
     func deviceManagerDidConnect(deviceManager: GCKDeviceManager!) {
-        println("Connected.");
+        print("Connected.");
         
         updateButtonStates();
         deviceManager.launchApplication(kReceiverAppId);
@@ -185,13 +185,13 @@ extension CastService {
         sessionId: String!,
         launchedApplication: Bool) {
             
-            println("Application has launched.");
+            print("Application has launched.");
             deviceManager.addChannel(playerNameChannel);
     }
     
     func deviceManager(deviceManager: GCKDeviceManager!,
         didFailToConnectToApplicationWithError error: NSError!) {
-            println("Received notification that device failed to connect to application.");
+            print("Received notification that device failed to connect to application.");
             
             showError(error);
             deviceDisconnected();
@@ -200,7 +200,7 @@ extension CastService {
     
     func deviceManager(deviceManager: GCKDeviceManager!,
         didFailToConnectWithError error: NSError!) {
-            println("Received notification that device failed to connect.");
+            print("Received notification that device failed to connect.");
             
             showError(error);
             deviceDisconnected();
@@ -209,7 +209,7 @@ extension CastService {
     
     func deviceManager(deviceManager: GCKDeviceManager!,
         didDisconnectWithError error: NSError!) {
-            println("Received notification that device disconnected.");
+            print("Received notification that device disconnected.");
             
             if (error != nil) {
                 showError(error)

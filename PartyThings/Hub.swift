@@ -20,7 +20,7 @@ class Hub {
     }
     
     func Send<T>(args: T){
-        var val = listeners["\(T.self)"];
+        let val = listeners["\(T.self)"];
         if(val != nil){
             let argsTyped: AnyObject = args as! AnyObject;
             val!(argsTyped);

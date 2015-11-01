@@ -89,11 +89,15 @@ class RootController : UIViewController {
         };
         Hub.Instance.Register(ThingRequest.self) {
             let args : ThingRequest = $0 as! ThingRequest;
+            
+            var vc = self.enterResponseView.getVC(self) as! EnterResponseController;
+            vc.setPromptText(args.Prompt);
+            
             self.transitionTo(self.enterResponseView)
         };
         Hub.Instance.Register(GuessRequest.self) {
             let args : GuessRequest = $0 as! GuessRequest;
-            self.transitionTo(self.pickPlayerView)
+            self.transitionTo(self.pickResponseView)
         };
         
         //toWaiting

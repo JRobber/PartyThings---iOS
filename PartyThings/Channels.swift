@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Jeremy Robertson. All rights reserved.
 //
 
-enum Channels: String, Printable {
+enum Channels: String, CustomStringConvertible {
     case GameName = "gamename"
     case PlayerName = "playername"
     case StandBy = "standby"

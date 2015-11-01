@@ -15,7 +15,7 @@ class GameNameController: ControllerBase {
     @IBOutlet weak var playerName: UITextField!
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
+        super.init(coder: aDecoder)!;
         
         Hub.Instance.Register(GameNameRequest.self) {
             let args : GameNameRequest = $0 as! GameNameRequest;
@@ -44,7 +44,7 @@ class GameNameController: ControllerBase {
     }
     
     @IBAction func submitClicked(sender: AnyObject) {
-        let newArgs = GameNameResponse(GameName: gameName.text, PlayerName: playerName.text);
+        let newArgs = GameNameResponse(GameName: gameName.text!, PlayerName: playerName.text!);
         Hub.Instance.Send(newArgs);
     }
 }

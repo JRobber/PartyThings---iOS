@@ -11,7 +11,7 @@ import UIKit
 class ReadyController: UIViewController {
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
+        super.init(coder: aDecoder)!;
         
         Hub.Instance.Register(ReadyRequest.self) {
             let args : ReadyRequest = $0 as! ReadyRequest;

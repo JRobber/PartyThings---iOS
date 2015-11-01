@@ -13,24 +13,24 @@ class SelectPromptController: UIViewController {
     @IBOutlet weak var option1: UIButton!
     @IBOutlet weak var option2: UIButton!
     @IBOutlet weak var option3: UIButton!
-    var lastPrompts : [String];
+    var lastPrompts : [String] = [];
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if(self.lastPrompts.count == 3){
+            option1.setTitle(lastPrompts[0], forState: UIControlState.Normal);
+            option2.setTitle(lastPrompts[1], forState: UIControlState.Normal);
+            option3.setTitle(lastPrompts[2], forState: UIControlState.Normal);
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        if(self.lastPrompts.count == 3){
-            option1.titleLabel!.text = lastPrompts[0];
-            option2.titleLabel!.text = lastPrompts[1];
-            option3.titleLabel!.text = lastPrompts[2];
-        }
     }
     
-    public func setPrompts(prompts: [String]) {
+    internal func setPrompts(prompts: [String]) {
         self.lastPrompts = prompts;
     }
     
